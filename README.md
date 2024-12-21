@@ -59,7 +59,7 @@ Les endpoints renvoies des données au format JSON afin d'avoir une meilleure ma
 - `src/`: Contient le code source du projet
     - `process/extract.js`: Contient le code pour scrap l'ensemble des données
     - `process/load.js`: Contient le code pour initialiser et insérer les données dans la base de données
-    - `process/process_product.py`: Contient les fonctions pour manipuler et transformer les données
+    - `process/transform.py`: Contient les fonctions pour manipuler et transformer les données
 - `server.js`: Contient le code source du serveur Express
 
 ## Fonctionnement
