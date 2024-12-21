@@ -62,11 +62,24 @@ Les endpoints renvoies des données au format JSON afin d'avoir une meilleure ma
     - `process/transform.py`: Contient les fonctions pour manipuler et transformer les données
 - `server.js`: Contient le code source du serveur Express
 
+## Choix techniques
+
+### Playwright (Extract)
+Nous avons choisi Playwright pour l'extraction des données en raison de sa capacité à interagir avec des pages web dynamiques, notamment celles générées par JavaScript. Playwright permet de gérer des scénarios complexes comme le défilement infini ou l'extraction de données à partir de contenu chargé dynamiquement. Il est également multi-navigateurs, ce qui permet une plus grande flexibilité.
+
+### Python (Transform)
+Pour la transformation des données, nous avons décidé de ne pas utiliser Pandas. Bien que Pandas soit un excellent outil pour le traitement de données complexes, nous avons estimé que dans notre cas, nous pouvions gérer la transformation sans. Nous effectuons un scraping de 50 produits maximum à la fois, ce qui nous permet de traiter efficacement les données à l'aide de simples boucles et opérations de base en Python. L'absence de Pandas simplifie également notre code et réduit la consommation mémoire, étant donné la taille limitée des données traitées à chaque itération.
+
+### Cassandra (Load)
+Cassandra a été sélectionné comme base de données NoSQL en raison de sa capacité à gérer des volumes massifs de données tout en garantissant une haute disponibilité. Cassandra est particulièrement adaptée à un modèle de données clé-valeur, ce qui facilite la gestion de données non structurées, comme celles collectées via le scraping. En utilisant des clés primaires composites, nous avons optimisé l'accès aux données tout en garantissant des performances élevées.
+
+
+
 ## Fonctionnement
 
 ### Extraction
 
-Les données sont extraites via le scraper `PlayWright`. Toutes les 10 minutes le scraper va ce rendre sur la catégorie `pc protable` du site `rueducommerce` et récupérer les informations suivantes pour chaque pc:
+Les données sont extraites via le scraper `PlayWright`. Toutes les 10 minutes le scraper va se rendre sur la catégorie `pc protable` du site `rueducommerce` et récupérer les informations suivantes pour chaque pc:
 - Nom
 - Description
 - Prix
