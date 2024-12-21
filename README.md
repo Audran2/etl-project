@@ -82,6 +82,7 @@ Les données sont extraites via le scraper `PlayWright`. Toutes les 10 minutes l
 Les données sont ensuite envoyées à un fichier python qui effectuent plusieurs actions :
 - Nettoyage des prix en enlevant tous les caractères spéciaux et tranformation en `float`
 - Uniformisation des noms des produits en lowercase
+- Transformation du stock en `boolean`
 - Suppression des doublons en fonction du nom et du prix du produit
 - Calcul des statistiques pour les marques
   - Calcul du nombre de produits par marque
