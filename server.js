@@ -23,7 +23,7 @@ initializeCassandra().then(() => {
 });
 
 // Schedule the cron job to run every 10 minutes
-cron.schedule('*/5 * * * *', async () => {
+cron.schedule('*/10 * * * *', async () => {
     console.log(`Scheduled scraping for page ${currentPage}...`);
     await dataExtraction(currentPage);
 
